@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  background: linear-gradient(145deg, #f6f9fc 0%, #eef2f5 100%);
+  color: #1a2c3e;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+/* custom fonts fallback */
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* header area */
+.hero {
+  background: linear-gradient(135deg, #0b3b3f 0%, #1c5d5f 100%);
+  border-radius: 2rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 35px -12px rgba(0, 32, 32, 0.2);
+  color: white;
+  transition: all 0.2s;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero h1 span {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  padding: 0.2rem 0.8rem;
+  border-radius: 60px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 680px;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+/* cards grid & layout */
+.grid-2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.form-card {
+  flex: 2;
+  min-width: 280px;
+  background: white;
+  border-radius: 1.75rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}
+
+.info-card {
+  flex: 1.2;
+  min-width: 260px;
+  background: white;
+  border-radius: 1.75rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem;
+}
+
+.form-card:hover, .info-card:hover {
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #1e7e7c;
+  padding-left: 1rem;
+  color: #0f3b3e;
+}
+
+.form-group {
+  margin-bottom: 1.4rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1e4a4d;
+  font-size: 0.9rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e0e9ed;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #ffffff;
+  transition: all 0.2s;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #1e7e7c;
+  box-shadow: 0 0 0 3px rgba(30, 126, 124, 0.2);
+}
+
+.row-2cols {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.row-2cols .form-group {
+  flex: 1;
+}
+
+button {
+  background: #1e7e7c;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.25s;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  letter-spacing: 0.3px;
+}
+
+button:hover {
+  background: #0e5e5c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 18px -8px rgba(30, 126, 124, 0.4);
+}
+
+/* permit card preview */
+.permit-preview {
+  background: #fefcf5;
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid #ffefcf;
+  text-align: left;
+}
+
+.preview-badge {
+  background: #1e7e7c10;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #1e7e7c;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.preview-content {
+  background: #ffffff;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  border: 1px solid #e9e2ce;
+  word-break: break-word;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9edf0;
+}
+
+.info-item strong {
+  display: block;
+  color: #0b3b3f;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item p {
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  color: #2d4f55;
+}
+
+.fee-badge {
+  background: #eef3f2;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  text-align: center;
+  margin: 1.2rem 0;
+}
+
+.fee-badge .price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e7e7c;
+}
+
+.alert {
+  background: #e9f4f3;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+  color: #1e5a58;
+}
+
+/* permit history list */
+.history-section {
+  background: white;
+  border-radius: 1.75rem;
+  padding: 1.8rem 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+.history-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.clear-btn {
+  background: none;
+  border: 1px solid #cfdfe3;
+  padding: 0.4rem 1rem;
+  width: auto;
+  color: #5c7c83;
+  font-weight: 500;
+  box-shadow: none;
+  margin-top: 0;
+}
+
+.clear-btn:hover {
+  background: #f0f4f7;
+  color: #1f5e62;
+  border-color: #b9cfd4;
+  transform: none;
+}
+
+.permit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.permit-record {
+  background: #fafdff;
+  border-left: 4px solid #1e7e7c;
+  padding: 0.9rem 1.2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.1s;
+  border-bottom: 1px solid #ecf3f5;
+}
+
+.record-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  flex: 3;
+}
+
+.record-name {
+  font-weight: 700;
+  color: #134b4d;
+}
+
+.record-id {
+  font-family: monospace;
+  background: #ecf3f2;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+}
+
+.record-date {
+  color: #55787e;
+  font-size: 0.75rem;
+}
+
+.delete-record {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #b7cfd3;
+  width: auto;
+  padding: 0.2rem 0.6rem;
+  margin: 0;
+  box-shadow: none;
+  transition: 0.1s;
+}
+
+.delete-record:hover {
+  color: #cf5c5c;
+  background: none;
+  transform: none;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  font-size: 0.8rem;
+  color: #6e949b;
+  border-top: 1px solid #d8e2e6;
+  margin-top: 2rem;
+}
+
+@media (max-width: 720px) {
+  .hero h1 { font-size: 2rem; }
+  .container { padding: 1rem; }
+  .form-card, .info-card { padding: 1.5rem; }
+}
+
+hr {
+  margin: 1rem 0;
+  border: none;
+  border-top: 1px solid #e0ecf0;
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Computer Science</title>
+</head>
+<body>
+    <header>
+        <h1>Departement of Computer Science</h1>
+        <nav>
+           <a href= "#about">About</a>
+           |
+           <a href="#program"> Programs</a>
+           |
+           <a href="#courses">Courses</a>
+           |
+           <a href="#media">Media</a>
+           |
+           <a href="#contacts">Contacts</a>
+        </nav>
+    </header>
+    <hr>
+    <h2 id ="about">About the Departement</h2> 
+    <p>The Departement of Computer Science provides high-quality education and research opportunities in software engineering,artificial intelligence, data science, and networking. We prepare students for modern technological challenges.</p>
+    <dl>
+        <dt><img src="" alt="Department Image" style="float: left; margin-left:25px;"> </dt> <br>
+        <dd>Computer Science Department Building</dd>
+    </dl>
+    <details>
+        <summary>
+            Read More About Our Mission
+        </summary>
+        <p>Our mission is to foster innovation, critical thinking, and problem-solving skills through cutting-edge research and industry collaboration.</p>
+        <hr>
+
+    </details>
+    <h2>Programs Offered</h2>
+    <ol>
+        <li>BSc in Computer Science</li>
+        <li>MSc in Computer Science</li>
+        <li>PhD in Computer Science</li>
+    </ol>
+    <h3>Program Duration</h3>
+    <table style="border:1px solid black;">
+        <tr>
+            <th style="border:1px solid black;">programs</th>
+            <th style="border:1px solid black;">Duration</th>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid black;">BSc</td>
+            <td style="border:1px solid black;">4 Years</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black;">MSc</td>
+            <td style="border:1px solid black;">2 Years</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black;">PhD</td>
+            <td style="border:1px solid black;">3-5 Years</td>
+        </tr>
+        
+    </table>
+    <h3>Enrollment Capacity</h3>
+    <p>
+        <label for="bsc">BSC Program: </label>
+        <meter id="bsc" value="80" min="0" max="100">80%</meter> 80%
+    </p>
+
+    <p>
+        <label for="msc">MSc Program: </label>
+        <meter id="msc" value="60" min="0" max="100">60%</meter> 60%
+    </p>
+
+        <p>
+        <label for="phd">PhD Program: </label>
+        <meter id="phd" value="40" min="0" max="100">40%</meter>40%
+    </p>
+    <hr>
+
+    <h3 id="courses">Key Courses</h3>
+
+    <dl>
+        <dt>Programming Fundamentals</dt>
+        <dd>Introduction to programing concepts and logic building.</dd>
+    </dl>
+
+    <dl>
+        <dt>Data Structure</dt>
+        <dd>Study of efficient data organisation techniques.</dd>
+    </dl>
+
+    <dl>
+        <dt>Database Systems</dt>
+        <dd>Design and management of relational databases.</dd>        
+    </dl>
+
+    <hr>
+
+    <h3 id="media">Department Media</h3>
+
+    <h4>Introduction video</h4>
+    
+    <video id="video1" width="560" height="200" controls autoplay loop>
+        <source src="Recording 2026-02-15 142956.mp4" type="video/mp4"/>
+        <source src="Recording 2026-02-15 142956.webm" type="video/webm"/>
+        <source src="Recording 2026-02-15 142956.ogg" type="video/ogg"/>
+        <p>Your browser does not support the html5 video feature</p>
+    </video>
+
+
+    <h4>Department Podcast</h4>
+    <audio id="audio1" controls autoplay loop>
+        <source src="b3b1b511a1116875072bd97b81cb3856.mp3" type="audio/mp3"/>
+        <source src="b3b1b511a1116875072bd97b81cb3856.mp3" type="audio/mpeg"/>
+    </audio>
+
+    <h4>Virtual Tour (YouTube) </h4>
+    <iframe id="frame1" src="https://www.youtube.com/embed/P6pFdeZg8LI?si=-ZJaIb80AGTK6uHY" title="virtual tour" width="415px" height="270px" loading="lazy" sandbox="allow-scripts allow-same-origin" allowfullscreen></iframe> 
+
+    <hr>
+
+    <h3 id="contacts">Contact Us</h3>
+        Full name:<br> <input type="text" name="Full name"/> <br> </br>
+        Email:<br> <input type="email" name="Email" multiple/>
+    </p>
+    
+    <p>
+        Select a Program: <br>
+        <select name="Select Program">
+            <option value="BSc" selected>BSc</option>
+            <option value="MSc">MSc</option>
+            <option value="PhD">PhD</option>
+        </select>
+    </p>
+
+
+    <p>Message:</p>
+    <p width="260px" height="100px"><textarea name="Message"></textarea></p>
+
+    <p><input type="submit"/></p>
+    
+    <footer><p>&copy; 2026 Department of Computer Science | <a href="www.csdet.com">info@csdet.com</a></p></footer>
+    
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>BizPermit Hub | Apply for Business Permit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <!-- Hero header section -->
+  <div class="hero">
+    <h1>
+      📄 Business Permit Wizard
+      <span>Fast & Official</span>
+    </h1>
+    <p>Apply for your local business permit online — secure, simple, and fully digital. Complete the form and generate your official permit preview.</p>
+  </div>
+
+  <div class="grid-2">
+    <!-- Application Form Column -->
+    <div class="form-card">
+      <h2>📋 Business Permit Application</h2>
+      <form id="permitForm">
+        <div class="row-2cols">
+          <div class="form-group">
+            <label>Business Owner Full Name *</label>
+            <input type="text" id="ownerName" placeholder="e.g. Sarah J. Martinez" required>
+          </div>
+          <div class="form-group">
+            <label>Business Legal Name *</label>
+            <input type="text" id="businessName" placeholder="e.g. Martinez Bakery LLC" required>
+          </div>
+        </div>
+
+        <div class="row-2cols">
+          <div class="form-group">
+            <label>Business Type *</label>
+            <select id="businessType">
+              <option value="Sole Proprietorship">Sole Proprietorship</option>
+              <option value="LLC">LLC (Limited Liability Company)</option>
+              <option value="Corporation">Corporation</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Non-Profit">Non-Profit Organization</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Annual Revenue Range</label>
+            <select id="revenue">
+              <option value="Under $50k">Under $50k</option>
+              <option value="$50k - $250k">$50k - $250k</option>
+              <option value="$250k - $1M">$250k - $1M</option>
+              <option value="Over $1M">Over $1M</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Business Address *</label>
+          <input type="text" id="address" placeholder="Street, city, ZIP code" required>
+        </div>
+
+        <div class="row-2cols">
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="email" placeholder="contact@business.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="(555) 123-4567">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Short Business Description</label>
+          <textarea rows="2" id="description" placeholder="Describe main activities..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn">✅ Generate & Apply for Permit</button>
+      </form>
+
+      <!-- Live permit preview card (dynamic) -->
+      <div class="permit-preview" id="livePreviewArea">
+        <div class="preview-badge">⚡ LIVE PREVIEW</div>
+        <div class="preview-content" id="previewText">
+          Fill out the form to see your business permit draft.
+        </div>
+      </div>
+    </div>
+
+    <!-- Information & Fee Column -->
+    <div class="info-card">
+      <h2>📌 Permit Information</h2>
+      <div class="info-item">
+        <strong>🗂️ Permit Validity</strong>
+        <p>Annual permit — renewable each fiscal year. Digital copy is legally equivalent.</p>
+      </div>
+      <div class="info-item">
+        <strong>⏱️ Processing Time</strong>
+        <p>Standard: 3–5 business days after submission. Expedited option available.</p>
+      </div>
+      <div class="fee-badge">
+        <div class="price">$125</div>
+        <div>Base permit fee</div>
+        <small style="display: block; margin-top: 5px;">+ local surcharges may apply</small>
+      </div>
+      <div class="alert">
+        ✅ All applications are verified by the municipal business licensing office. Make sure details are accurate.
+      </div>
+      <hr>
+      <div class="info-item">
+        <strong>📞 Need Assistance?</strong>
+        <p>Call (800) 452-7883 or email licensing@bizpermit.gov</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Permit history / previously generated permits -->
+  <div class="history-section">
+    <div class="history-title">
+      <h2>📜 Recent Permit Applications</h2>
+      <button id="clearHistoryBtn" class="clear-btn">🗑️ Clear all</button>
+    </div>
+    <div id="permitHistoryList" class="permit-list">
+      <!-- dynamic permit entries will appear here -->
+      <div style="color:#8ba5ad; text-align: center; padding: 1rem;">No permits generated yet. Fill the form & click "Generate & Apply".</div>
+    </div>
+  </div>
+  <footer>
+    <p>© 2025 BizPermit Hub — Digital Municipal Licensing Portal | Demo interface for business permit management</p>
+  </footer>
+</div>
+
+<script>
+  // Retrieve stored permits from localStorage or initialize empty array
+  let permitsArray = [];
+
+  // Helper: load permits from storage
+  function loadPermitsFromStorage() {
+    const stored = localStorage.getItem('businessPermits');
+    if (stored) {
+      try {
+        permitsArray = JSON.parse(stored);
+      } catch(e) { permitsArray = []; }
+    } else {
+      permitsArray = [];
+    }
+    renderPermitHistory();
+  }
+
+  // Save permits to localStorage
+  function savePermitsToStorage() {
+    localStorage.setItem('businessPermits', JSON.stringify(permitsArray));
+  }
+
+  // Helper to generate a unique permit ID (simple)
+  function generatePermitId() {
+    return 'BP-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0') + '-' + Date.now().toString().slice(-6);
+  }
+
+  // Format current date as readable string
+  function getCurrentDate() {
+    const now = new Date();
+    return now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  // Create a new permit object from form values, with validation
+  function createPermitFromForm() {
+    const ownerName = document.getElementById('ownerName').value.trim();
+    const businessName = document.getElementById('businessName').value.trim();
+    const businessType = document.getElementById('businessType').value;
+    const revenue = document.getElementById('revenue').value;
+    const address = document.getElementById('address').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const description = document.getElementById('description').value.trim();
+
+    // validation: required fields
+    if (!ownerName || !businessName || !address || !email) {
+      alert('Please fill in all required fields: Owner Name, Business Name, Address, and Email.');
+      return null;
+    }
+    // simple email check
+    const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+    if (!emailPattern.test(email)) {
+      alert('Please enter a valid email address (e.g., name@domain.com).');
+      return null;
+    }
+
+    const permitId = generatePermitId();
+    const issueDate = getCurrentDate();
+    const expiryDate = (() => {
+      const d = new Date();
+      d.setFullYear(d.getFullYear() + 1);
+      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    })();
+
+    return {
+      id: permitId,
+      ownerName: ownerName,
+      businessName: businessName,
+      businessType: businessType,
+      revenue: revenue,
+      address: address,
+      email: email,
+      phone: phone || 'Not provided',
+      description: description || '—',
+      issueDate: issueDate,
+      expiryDate: expiryDate,
+      timestamp: Date.now()
+    };
+  }
+
+  // Update the live preview panel based on current form values (real-time)
+  function updateLivePreview() {
+    const owner = document.getElementById('ownerName').value.trim() || '[Owner name]';
+    const biz = document.getElementById('businessName').value.trim() || '[Business name]';
+    const bizType = document.getElementById('businessType').value;
+    const addressVal = document.getElementById('address').value.trim() || '[Business address]';
+    const emailVal = document.getElementById('email').value.trim() || '[Email]';
+    const revenueVal = document.getElementById('revenue').value;
+    const desc = document.getElementById('description').value.trim() || '—';
+    
+    const previewDiv = document.getElementById('previewText');
+    previewDiv.innerHTML = `
+      <strong>📄 OFFICIAL PERMIT (DRAFT)</strong><br>
+      <strong>Permit Holder:</strong> ${escapeHtml(owner)}<br>
+      <strong>Business Entity:</strong> ${escapeHtml(biz)}<br>
+      <strong>Type:</strong> ${escapeHtml(bizType)} | <strong>Revenue:</strong> ${escapeHtml(revenueVal)}<br>
+      <strong>Address:</strong> ${escapeHtml(addressVal)}<br>
+      <strong>Contact:</strong> ${escapeHtml(emailVal)}<br>
+      <strong>Description:</strong> ${escapeHtml(desc)}<br>
+      <span style="font-size:0.75rem; color:#2c7a6e;">⚡ Valid from today + 1 year | Permit fee: $125</span>
+    `;
+  }
+
+  // simple escape to avoid injection
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
+  // add a new permit to array & re-render + save
+  function addPermit(permitData) {
+    if (!permitData) return false;
+    permitsArray.unshift(permitData);  // newest first
+    savePermitsToStorage();
+    renderPermitHistory();
+    return true;
+  }
+
+  // delete permit by id
+  function deletePermitById(permitId) {
+    permitsArray = permitsArray.filter(p => p.id !== permitId);
+    savePermitsToStorage();
+    renderPermitHistory();
+  }
+
+  // clear all permit history
+  function clearAllPermits() {
+    if (permitsArray.length > 0 && confirm('Are you sure you want to delete ALL permit records?')) {
+      permitsArray = [];
+      savePermitsToStorage();
+      renderPermitHistory();
+    } else if (permitsArray.length === 0) {
+      alert('No permits to clear.');
+    }
+  }
+
+  // render the permit history list with actions
+  function renderPermitHistory() {
+    const container = document.getElementById('permitHistoryList');
+    if (!container) return;
+    if (permitsArray.length === 0) {
+      container.innerHTML = `<div style="color:#8ba5ad; text-align: center; padding: 1rem;">✨ No permits generated yet. Fill the form & click "Generate & Apply".</div>`;
+      return;
+    }
+    let html = '';
+    for (let permit of permitsArray) {
+      html += `
+        <div class="permit-record">
+          <div class="record-info">
+            <span class="record-name">${escapeHtml(permit.businessName)}</span>
+            <span class="record-id">${escapeHtml(permit.id)}</span>
+            <span>👤 ${escapeHtml(permit.ownerName)}</span>
+            <span class="record-date">📅 ${escapeHtml(permit.issueDate)}</span>
+          </div>
+          <button class="delete-record" data-id="${permit.id}" title="Delete permit">✖</button>
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+    // attach delete event listeners to each delete button
+    document.querySelectorAll('.delete-record').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute('data-id');
+        if (id && confirm('Remove this permit from history?')) {
+          deletePermitById(id);
+        }
+      });
+    });
+  }
+
+  // handle form submission: generate new permit, add to history, reset preview but keep data
+  function onFormSubmit(event) {
+    event.preventDefault();
+    const newPermit = createPermitFromForm();
+    if (newPermit) {
+      addPermit(newPermit);
+      // Show success message
+      alert(`✅ Permit successfully generated!\nPermit ID: ${newPermit.id}\nA digital copy has been saved to your recent applications.`);
+      // Optionally reset form fields? We'll keep them but clear maybe? We'll NOT reset for convenience, but we can focus owner name
+      // But we keep as is for further editing.
+      // Update preview again for consistency
+      updateLivePreview();
+    }
+  }
+
+  // Event listeners for realtime preview on all form inputs
+  function bindRealtimeEvents() {
+    const inputs = ['ownerName', 'businessName', 'businessType', 'revenue', 'address', 'email', 'phone', 'description'];
+    inputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', updateLivePreview);
+      if (el && el.tagName === 'SELECT') el.addEventListener('change', updateLivePreview);
+    });
+  }
+
+  // initial load & setup
+  document.addEventListener('DOMContentLoaded', () => {
+    loadPermitsFromStorage();
+    bindRealtimeEvents();
+    updateLivePreview();
+    const form = document.getElementById('permitForm');
+    if (form) form.addEventListener('submit', onFormSubmit);
+    const clearBtn = document.getElementById('clearHistoryBtn');
+    if (clearBtn) clearBtn.addEventListener('click', clearAllPermits);
+  });
+</script>
+</body>
+</html>

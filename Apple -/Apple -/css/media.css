@@ -1,0 +1,258 @@
+/* Responsive Media Queries */
+
+@media (max-width: 1068px) {
+    .heroBg1 {
+        background-image: url("/img/jpg/hero/iphone-family/hero_iphone_family__be5jkzxszb1e_medium_2x.jpg");
+    }
+    .heroBg2 {
+        background-image: url("/img/jpg/hero/fathers-day/hero_fd26__c9vr0hxu24eq_medium_2x.jpg");
+    }
+    .heroBg3 {
+        background-image: url("/img/jpg/hero/apple-for-college/hero_college_students_2026__dzrtx52rt9aq_medium_2x.jpg");
+    }
+
+    .promoBg1 {
+        background-image: url("/img/jpg/promo/macbook-m5/promo_macbook_air_m5__e5xk2yysqiie_medium_2x.jpg");
+    }
+    .promoBg2 {
+        background-image: url("/img/jpg/promo/ipad-air-m4/promo_ipad_air_m4__bgcv7t286k8y_medium_2x.jpg");
+    }
+    .promoBg3 {
+        background-image: url("/img/jpg/promo/macbook-pro/promo_macbook_pro__c9td9w1mc8ia_medium_2x.jpg");
+    }
+    .promoBg4 {
+        background-image: url("/img/jpg/promo/apple-watch-series/promo_apple_watch_series_11__gnlwqxe1jlu2_medium_2x.jpg");
+    }
+    .promoBg5 {
+        background-image: url("/img/jpg/promo/apple-card-airpods/promo_apple_card_airpods__dpbuw4e90126_medium_2x.jpg");
+    }
+    .promoBg6 {
+        background-image: url("/img/jpg/promo/iphone-tradein/promo_iphone_tradein__e4hrjxmgmf0i_medium_2x.jpg");
+    }
+}
+
+@media (max-width: 734px) {
+    .heroBg1 {
+        background-image: url("/img/jpg/hero/iphone-family/hero_iphone_family__be5jkzxszb1e_small_2x.jpg");
+    }
+    .heroBg2 {
+        background-image: url("/img/jpg/hero/fathers-day/hero_fd26__c9vr0hxu24eq_small_2x.jpg");
+    }
+    .heroBg3 {
+        background-image: url("/img/jpg/hero/apple-for-college/hero_college_students_2026__dzrtx52rt9aq_small_2x.jpg");
+    }
+
+    .promoBg1 {
+        background-image: url("/img/jpg/promo/macbook-m5/promo_macbook_air_m5__e5xk2yysqiie_small_2x.jpg");
+    }
+    .promoBg2 {
+        background-image: url("/img/jpg/promo/ipad-air-m4/promo_ipad_air_m4__bgcv7t286k8y_small_2x.jpg");
+    }
+    .promoBg3 {
+        background-image: url("/img/jpg/promo/macbook-pro/promo_macbook_pro__c9td9w1mc8ia_small_2x.jpg");
+    }
+    .promoBg4 {
+        background-image: url("/img/jpg/promo/apple-watch-series/promo_apple_watch_series_11__gnlwqxe1jlu2_small_2x.jpg");
+    }
+    .promoBg5 {
+        background-image: url("/img/jpg/promo/apple-card-airpods/promo_apple_card_airpods__dpbuw4e90126_small_2x.jpg");
+    }
+    .promoBg6 {
+        background-image: url("/img/jpg/promo/iphone-tradein/promo_iphone_tradein__e4hrjxmgmf0i_small_2x.jpg");
+    }
+
+    .card {
+        height: 500;
+    }
+
+    .cardGrid#promoSection {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0;
+    }
+
+    .wrapper.footerBar {
+        flex-direction: column-reverse;
+        gap: 4px;
+    }
+
+    .footerBar p.footerRegion,
+    .footerBar p {
+        padding-left: 20px;
+        margin: 0;
+    }
+
+}
+
+
+
+@media (max-width: 833px) {
+    .navLink {
+        display: none;
+    }
+
+    .navHamburger {
+        display: block;
+    }
+
+  
+    .navRightAlign {
+        margin-left: auto;
+    }
+
+ 
+
+    .footerNavGrid {
+        display: none;
+    }
+
+    .mobileVisible {
+        display: block;
+        margin-bottom: 20px;
+        padding-top: 30px;
+    }
+
+    .footerAccordionItem {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .footerAccordionItem summary {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 36px;
+        
+    }
+
+    summary h3 {
+        opacity: 0.8;
+        font-weight: 600;
+    }
+
+    .accordionIcon {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-right: 1.5px solid #1d1d1f;
+        border-bottom: 1.5px solid #1d1d1f;
+        transform: rotate(45deg) rotateX(0deg); 
+        transition: transform 0.2s ease-in-out;
+        margin-right: 5px;
+    }
+
+    .footerAccordionItem[open] .accordionIcon {
+        transform: rotate(-45deg) rotateX(180deg);
+    }
+
+    .footerAccordionItem ul {
+        padding: 5px 0 16px;
+        margin-left: 18px;
+    }
+
+    .footerAccordionItem ul li {
+        padding: 6px 14px;
+    }
+
+    .footerAccordionItem ul li a {
+        display: block;
+    }
+}
+
+
+
+@media (max-width: 1068px) {
+    .entertainmentHeading {
+        font-size: 40px;
+    }
+
+    .slideCard img {
+        width: 680px;
+        height: 380px;
+    }
+
+    .slideInfo {
+        left: 30px;
+        bottom: 28px;
+        gap: 10px;
+    }
+
+    .slideGenre,
+    .slideDot,
+    .slideDesc {
+        font-size: 16px;
+    }
+
+    .slideBtn {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+
+    .promoCard {
+        width: 320px;
+        height: 184px;
+    }
+}
+@media (max-width: 734px) {
+    .entertainmentWrapper {
+        padding: 40px 0 28px;
+    }
+
+    .entertainmentHeading {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+  
+    .slideCard img {
+        width: calc(100vw - 40px);
+        height: 220px;
+    }
+
+    .slideInfo {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .slideGenre,
+    .slideDot,
+    .slideDesc {
+        font-size: 13px;
+    }
+
+    .slideBtn {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+  
+    .promoCard {
+        width: calc(50vw - 20px);
+        height: 160px;
+    }
+
+    .promoCardText {
+        font-size: 12px;
+    }
+
+    .promoCardLink {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+
+    .sliderDots {
+        margin: 12px 0 18px;
+    }
+
+    .sliderDot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .sliderDotActive {
+        width: 22px;
+        height: 6px;
+    }
+}

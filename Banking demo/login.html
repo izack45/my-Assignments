@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Bank - Login</title>
+
+    <!--this is a link that is used to make the image we have on our file appear on the title infront of our Demo Bank-->
+    <link rel="icon" type="image/x-icon" href="images/landmark-solid.png">
+    <!--this one is awesome link to make my website get icons logos without downloading an image-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--this is a link to use fonts from google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!--to make sure our elements behave the same in every browser-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+
+            <div class="logo">
+            <i class="fas fa-landmark"></i>
+            <h1>Demo Bank</h1>
+            </div>
+
+            <nav>
+                <ul class="navlinks">
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="transfer.html">Transfer</a></li>
+                    <li><a href="contact.html"><i class="fa-solid fa-address-book"></i>Contact</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+        
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="logincontainer">
+                <div class="logincard">
+                    <div class="loginheader">
+                        <i class="fas fa-user-circle"></i>
+                        <h2>Welcome to the login page</h2>
+                        <p>The path to your accounts lies before you; step forward and identify yourself</p>
+                    </div>
+
+                    <form action="dashboard.html" method="get" class="loginform">
+                        <div class="formgroup">
+                            <label for="username">
+                                <i class="fas fa-envelope"></i>Email or Username
+                            </label>
+                            <input type="text" id="username" name="username" placeholder="Enter your email or username" required>
+                        </div>
+
+                        <div class="formgroup">
+                            <label for="password">
+                                <i class="fas fa-lock"></i>Password
+                            </label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+
+                        <div class="formoptions">
+                            <label class="checkboxlabel">
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                            <a href="#" class="forgotpassword">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btnlogin">Log In</button>
+
+                    </form>
+
+                    <div class="loginfooter">
+                        <p>Don't have an account? <a href="contact.html">Sign up</a></p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fas fa-landmark"></i>
+                        <h3>Demo Bank</h3>
+                    </div>
+                    <p>Modern banking for everyone.</p>
+                    <div class="socialicons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Current Account</a></li>
+                        <li><a href="#">Savings Account</a></li>
+                        <li><a href="#">Credit Card</a></li>
+                        <li><a href="#">Business Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Help Centre</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-legal">
+                <p>Demo Bank Limited is a company registered in England and Wales (No. 09446231). Demo Bank Limited is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority. Our Financial Services Register number is 730427. Our address is Broadwalk House, 5 Appold St, London EC2A 2AG.</p>
+                <p>&copy; 2025 Demo Bank UK Ltd. All rights reserved.</p>
+                <p class="smalltext">International Money Transfers: Send Money to USA | Send Money to India | Send Money to Nigeria | Send Money to Poland | Send Money to Ghana | Send Money to Dubai | Send Money to Canada | Send Money to Australia</p>
+                <p class="smalltext">Currency Converter: Convert GBP to USD | Convert USD to EUR | Convert GBP to EUR | Convert EUR to GBP | Convert GBP to INR | Convert USD to GBP</p>
+                <p class="smalltext">Demo Bank USA | Demo Bank Europe | Demo Bank Asia | Demo Bank Australia</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
